@@ -79,6 +79,8 @@ int main(int argc, char* argv[])
     }
     cmd = cmd.substr(6);
     cmd = UrlDecode(cmd);
+    string url_1 = "upos-hz-mirrorakam.akamaized.net", url_2 = "upos-sz-mirrorks3c.bilivideo.com";
+    cmd = cmd.replace(cmd.find(url_1), url_1.length(), url_2);
     char* char_url;
     _get_pgmptr(&char_url);
     string str_url = char_url;
