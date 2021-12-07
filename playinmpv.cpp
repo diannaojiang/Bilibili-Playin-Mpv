@@ -65,6 +65,7 @@ std::string UrlDecode(const std::string& str)
     }
     return strTemp;
 }
+
 int main(int argc, char* argv[])
 {
     string cmd;
@@ -78,7 +79,12 @@ int main(int argc, char* argv[])
     }
     cmd = cmd.substr(6);
     cmd = UrlDecode(cmd);
-    cmd = "mpv " + cmd;
+    char* char_url;
+    _get_pgmptr(&char_url);
+    string str_url = char_url;
+    string str_url0 = str_url.substr(0, 3);
+    string str_url1 = str_url.substr(3,str_url.length()-17);
+    cmd = str_url0 + "\"" + str_url1 + "\\\"mpv " + cmd;
     const char* cstr = cmd.c_str();
     std::cout << cstr;
     system(cstr);
