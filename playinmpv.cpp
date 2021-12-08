@@ -71,16 +71,25 @@ int main(int argc, char* argv[])
     string cmd;
     if (argc < 2)
     {
-        std::cout << "can't get";
+        std::cout << "can't get value" << endl;
         Sleep(1000 * 10);
     }
     else {
         cmd = argv[1];
+        std::cout << "输入url:" << endl;
+        std::cout << cmd <<endl;
     }
     cmd = cmd.substr(6);
     cmd = UrlDecode(cmd);
     string url_1 = "upos-hz-mirrorakam.akamaized.net", url_2 = "upos-sz-mirrorks3c.bilivideo.com";
-    cmd = cmd.replace(cmd.find(url_1), url_1.length(), url_2);
+    if (cmd.find(url_1)!=string::npos) {
+        cmd = cmd.replace(cmd.find(url_1), url_1.length(), url_2);
+        std::cout << "港澳台视频cdn替换为：upos-sz-mirrorks3c.bilivideo.com" << endl;
+    }
+    if (cmd.find(url_1) != string::npos) {
+        cmd = cmd.replace(cmd.find(url_1), url_1.length(), url_2);
+        std::cout << "港澳台音频cdn替换为：upos-sz-mirrorks3c.bilivideo.com" << endl;
+    }
     char* char_url;
     _get_pgmptr(&char_url);
     string str_url = char_url;
@@ -88,7 +97,8 @@ int main(int argc, char* argv[])
     string str_url1 = str_url.substr(3,str_url.length()-17);
     cmd = str_url0 + "\"" + str_url1 + "\\\"mpv " + cmd;
     const char* cstr = cmd.c_str();
-    std::cout << cstr;
+    std::cout << "执行命令：" << endl;
+    std::cout << cstr << endl;
     system(cstr);
     Sleep(1000 * 1);
     return 0;
