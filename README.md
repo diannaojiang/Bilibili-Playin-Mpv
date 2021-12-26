@@ -40,6 +40,6 @@ Windows Registry Editor Version 5.00
 
 - 双击运行**mpv.reg**导入注册表
 - 在[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved "Bilibili-Evolved")中使用:**设置-插件-添加插件-在线**添加**MPV 输出支持**
-- 在视频页左侧呼出[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved "Bilibili-Evolved")-功能-下载视频
-- 请注意使用时**格式**要选用Dash-h.265或h.264
-- 输出方式选择MPV后点击开始屏幕左下方会弹出播放按钮，再次点击后即可呼出本地播放器进行播放
+- 在视频页左侧呼出**[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved "Bilibili-Evolved")-功能-下载视频**
+- 请注意使用时**格式**要选用**Dash-h.265或h.264**
+- **输出方式选择MPV**后点击开始屏幕左下方会弹出播放按钮，再次点击后即可呼出本地播放器进行播放
