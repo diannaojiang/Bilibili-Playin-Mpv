@@ -38,14 +38,21 @@ Windows Registry Editor Version 5.00
 
 ```
 
+
  - 双击运行**mpv.reg**导入注册表
- - 在[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved "Bilibili-Evolved")中使用:**设置-组件-添加组件-浏览**：选择**play-in-mpv.js** 或 使用**在线**添加**MPV播放**
+ - 在[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved "Bilibili-Evolved")中使用:**设置-插件-添加插件-在线**添加**MPV 输出支持**
+ - 在视频页左侧呼出[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved "Bilibili-Evolved")**-功能-下载视频**
+ - 请注意使用时**格式**要选用**Dash-h.265或h.264或AV1**
+ - **输出方式选择MPV**后点击开始屏幕左下方会弹出播放按钮，再次点击后即可呼出本地播放器进行播放
 
 
 ## Linux食用指南
 
  - 运行前确保系统已安装**xdg-open**
  - 下载[最新发行版](https://github.com/diannaojiang/Bilibili-Playin-Mpv/releases "最新发行版")并解压
- - 将压缩包解压后放置于你想将本程序安装到的位置 请确保你拥有所放置位置的权限
+ - 将压缩包解压后放置于你想将本程序安装到的位置 请确保你拥有所放置目录的权限
  - 运行install.sh
- - 在[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved "Bilibili-Evolved")中使用:**设置-组件-添加组件-浏览**：选择**play-in-mpv.js** 或 使用**在线**添加**MPV播放**
+ - 在[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved "Bilibili-Evolved")中使用:**设置-插件-添加插件-在线**添加**MPV 输出支持**
+ - 在视频页左侧呼出[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved "Bilibili-Evolved")**-功能-下载视频**
+ - 请注意使用时**格式**要选用**Dash-h.265或h.264或AV1**
+ - **输出方式选择MPV**后点击开始屏幕左下方会弹出播放按钮，再次点击后即可呼出本地播放器进行播放
