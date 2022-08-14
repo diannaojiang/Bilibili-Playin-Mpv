@@ -1,5 +1,6 @@
 # Bilibili-Playin-Mpv
-
+![下载量](https://img.shields.io/github/downloads/diannaojiang/Bilibili-Playin-Mpv/total?label=%E4%B8%8B%E8%BD%BD%E9%87%8F
+)
 ------------
 
 本项目旨在基于[Bilibili-Evolved](https://github.com/the1812/Bilibili-Evolved "Bilibili-Evolved")提供在本地播放器MPV中在线播放Bilibili视频的功能。
