@@ -82,15 +82,15 @@ int main(int argc, char* argv[])
     }
     cmd = cmd.substr(6);
     cmd = UrlDecode(cmd);
-    string url_1 = "upos-hz-mirrorakam.akamaized.net", url_2 = "upos-sz-mirrorks3c.bilivideo.com";
-    if (cmd.find(url_1)!=string::npos) {
-        cmd = cmd.replace(cmd.find(url_1), url_1.length(), url_2);
-        std::cout << "港澳台视频cdn替换为：upos-sz-mirrorks3c.bilivideo.com" << endl;
-    }
-    if (cmd.find(url_1) != string::npos) {
-        cmd = cmd.replace(cmd.find(url_1), url_1.length(), url_2);
-        std::cout << "港澳台音频cdn替换为：upos-sz-mirrorks3c.bilivideo.com" << endl;
-    }
+    // string url_1 = "upos-hz-mirrorakam.akamaized.net", url_2 = "upos-sz-mirrorks3c.bilivideo.com";
+    // if (cmd.find(url_1)!=string::npos) {
+    //     cmd = cmd.replace(cmd.find(url_1), url_1.length(), url_2);
+    //     std::cout << "港澳台视频cdn替换为：upos-sz-mirrorks3c.bilivideo.com" << endl;
+    // }
+    // if (cmd.find(url_1) != string::npos) {
+    //     cmd = cmd.replace(cmd.find(url_1), url_1.length(), url_2);
+    //     std::cout << "港澳台音频cdn替换为：upos-sz-mirrorks3c.bilivideo.com" << endl;
+    // }
     cmd = "mpv " + cmd;
     const char* cstr = cmd.c_str();
     std::cout << "执行命令：" << endl;
