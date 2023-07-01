@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string>
 #include <assert.h>
+#include <locale>
 using namespace std;
 
 unsigned char ToHex(unsigned char x)
@@ -66,8 +67,38 @@ std::string UrlDecode(const std::string& str)
     return strTemp;
 }
 
+std::string GetMpvPlayerPathFromRegistry()
+{
+    HKEY hKey;
+    LPCWSTR subKey = L"mpv\\DefaultIcon";
+    std::wstring valueBuffer(MAX_PATH, '\0');
+    DWORD bufferSize = MAX_PATH;
+
+    if (RegOpenKeyExW(HKEY_CLASSES_ROOT, subKey, 0, KEY_READ, &hKey) == ERROR_SUCCESS)
+    {
+        // Read the default value from the subkey
+        RegQueryValueExW(hKey, NULL, NULL, NULL, reinterpret_cast<LPBYTE>(&valueBuffer[0]), &bufferSize);
+        RegCloseKey(hKey);
+
+        // Extract the path from the value
+        std::wstring value = valueBuffer.substr(0, valueBuffer.find_first_of(L','));
+        return std::wstring_convert<std::codecvt<wchar_t, char, std::mbstate_t>>{}.to_bytes(value);
+    }
+
+    return "";
+}
+
 int main(int argc, char* argv[])
 {
+    std::string mpvPlayerPath = GetMpvPlayerPathFromRegistry();
+
+    if (mpvPlayerPath.empty())
+    {
+        std::cout << "Failed to get MPV player path from the registry." << std::endl;
+        Sleep(1000 * 10);
+        return -1;
+    }
+
     string cmd;
     if (argc < 2)
     {
@@ -97,8 +128,10 @@ int main(int argc, char* argv[])
     string str_url = char_url;
     string str_url0 = str_url.substr(0, 3);
     string str_url1 = str_url.substr(3,str_url.length()-17);
-    cmd = str_url0 + "\"" + str_url1 + "\\\"mpv " + cmd;
-    const char* cstr = cmd.c_str();
+    //cmd = str_url0 + "\"" + str_url1 + "\\\"mpv " + cmd;
+    //const char* cstr = cmd.c_str();
+    const std::string& mpvCmd = mpvPlayerPath + " " + cmd;
+    const char* cstr = mpvCmd.c_str();
     std::cout << "执行命令：" << endl;
     std::cout << cstr << endl;
     system(cstr);
