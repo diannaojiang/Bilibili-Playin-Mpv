@@ -92,13 +92,6 @@ int main(int argc, char* argv[])
 {
     std::string mpvPlayerPath = GetMpvPlayerPathFromRegistry();
 
-    if (mpvPlayerPath.empty())
-    {
-        std::cout << "Failed to get MPV player path from the registry." << std::endl;
-        Sleep(1000 * 10);
-        return -1;
-    }
-
     string cmd;
     if (argc < 2)
     {
@@ -128,13 +121,33 @@ int main(int argc, char* argv[])
     string str_url = char_url;
     string str_url0 = str_url.substr(0, 3);
     string str_url1 = str_url.substr(3,str_url.length()-17);
-    //cmd = str_url0 + "\"" + str_url1 + "\\\"mpv " + cmd;
-    //const char* cstr = cmd.c_str();
-    const std::string& mpvCmd = mpvPlayerPath + " " + cmd;
-    const char* cstr = mpvCmd.c_str();
+    /*
+    cmd = str_url0 + "\"" + str_url1 + "\\\"mpv " + cmd;
+    const char* cstr = cmd.c_str();
+
+    const std::string& mpvCmd = mpvPlayerPath + " " + cmd;  //add
+    const char* cstr = mpvCmd.c_str();                      //add
+
     std::cout << "执行命令：" << endl;
     std::cout << cstr << endl;
-    system(cstr);
+    */
+    if (!mpvPlayerPath.empty())
+    {
+        cmd = mpvPlayerPath + " " + cmd;
+        std::cout << "执行命令：" << endl;
+        std::cout << cmd << endl;
+        const char* cstr = cmd.c_str();
+        system(cstr);
+    }
+    else
+    {
+        cmd = str_url0 + "\"" + str_url1 + "\\\"mpv " + cmd;
+        std::cout << "未在注册表中找到MPV播放器路径，使用默认方式执行命令：" << endl;
+        std::cout << cmd << endl;
+        const char* cstr = cmd.c_str();
+        system(cstr);
+    }
+    
     Sleep(1000 * 1);
     return 0;
 }
